@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
       $table->string('username')->unique();
       $table->string('birthday');
       $table->string('address');
-      $table->float('weight, 8, 2');
-      $table->float('height, 8, 2');
+      $table->float('weight')->nullable();
+      $table->float('height')->nullable();
       $table->string('job');
       $table->integer('purpose');
       $table->rememberToken();

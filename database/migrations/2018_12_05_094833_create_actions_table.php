@@ -18,7 +18,7 @@ class CreateActionsTable extends Migration
             $table->string('name');
             $table->integer('schedule_id');
             $table->time('time');
-            $table->time('during_time');
+            $table->time('during_time')->nullable();
             $table->timestamps();
         });
     }

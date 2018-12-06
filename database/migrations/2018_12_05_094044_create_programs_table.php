@@ -17,9 +17,9 @@ class CreateProgramsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
-            $table->integer('lever');
+            $table->integer('level');
             $table->text('content');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->timestamps();
         });
     }
