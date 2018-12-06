@@ -8,11 +8,11 @@ class MyProgram extends Model
 {
     protected $table = "my_programs";
 
-    public funtion user(){
-      return $this->belong_to('App\Schedule','user_id','id');
+    public function user(){
+      return $this->belongsTo('App\Schedule','user_id','id');
     }
 
-    public funtion program(){
-      return $this->belong_to('App\Schedule','program_id','id');
+    public function program(){
+      return $this->belongsTo('App\Schedule','program_id','id');
     }
 }

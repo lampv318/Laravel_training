@@ -8,7 +8,7 @@ class Action extends Model
 {
     protected $table = "actions";
 
-    public funtion schedule(){
-      return $this->belong_to('App\Schedule','schedule_id','id');
+    public function schedule(){
+      return $this->belongsTo('App\Schedule','schedule_id','id');
     }
 }
