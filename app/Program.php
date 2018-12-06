@@ -11,10 +11,16 @@ class Program extends Model
      public function user(){
       return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
      public function schedule(){
       return $this->hasMany('App\Schedule', 'program_id', 'id');
     }
+    
      public function my_program(){
       return $this->hasMany('App\MyProgram', 'program_id', 'id');
+    }
+
+    public function following_user(){
+      return $this->hasManyThrough('App\User', 'App\MyProgram', 'program_id', 'id', 'id', 'user_id');
     }
 }
