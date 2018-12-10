@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@extends('layout')
 
-  <link rel="stylesheet" href="{{asset('css/users.css')}}">
+@section('title')
+  Login
+@endsection
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="{{asset('js/users.js')}}"></script>
-</head>
-<body>
+@section('content')
+<div class="div-1">
 <div class="container">
 
   <div class="row" style="margin-top:20px">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form action="login" method="post">
-        {!! csrf_field() !!}
         <fieldset>
-          <!--   -->
+          <input type="hidden" name="_token" value="{{csrf_token()}}">
           <h2>Please Log In</h2>
           @if(count($errors)>0)
             <div class="alert alert-danger">
@@ -54,10 +43,10 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <input type="submit" class="btn btn-lg btn-success btn-block" 
-                  value="Sign In">
+                  value="Login">
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-              <a href="{{url('signup')}}" class="btn btn-lg btn-primary btn-block">Register</a>
+              <a href="{{url('signup')}}" class="btn btn-lg btn-primary btn-block">Signup</a>
             </div>
           </div>
         </fieldset>
@@ -66,5 +55,5 @@
   </div>
 
 </div>
-</body>
-</html>
+</div>
+@endsection
