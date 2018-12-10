@@ -18,10 +18,10 @@ class UserController extends Controller
       'email'=>'required',
       'password'=>'required'
     ]);
-    
+    $user = User::where('email', $request->email)->first();
     if(Auth::attempt(['email'=>$request->email,
         'password'=>$request->password])){
-        return redirect('/');}
+        return redirect("/{$user->username}/my_page");}
       else {
         return redirect('login')->with('alert','Login fail. Please try again');
       }
@@ -74,5 +74,15 @@ class UserController extends Controller
     $user->save();
 
     return redirect()->back()->with('alert', 'Update profile successfully.');
+  }
+
+  function getMyPage($username){
+    $user = User::where('username', $username)->first();
+    
+    $following_program = $user->following_program;
+    return view('users.my_page')->with([
+      'following_program' => $following_program,
+      'user' => $user
+    ]);
   }
 }
