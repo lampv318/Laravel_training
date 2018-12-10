@@ -25,7 +25,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'job' => $faker->jobTitle,
         'purpose' => $faker->numberBetween($min = 35, $max = 150),
         'email_verified_at' => now(),
-        'password' => '123456', // secret
+        'password' => bcrypt('123456'), // secret
         'remember_token' => str_random(10),
     ];
 });

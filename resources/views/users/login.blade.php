@@ -21,8 +21,9 @@
   <div class="row" style="margin-top:20px">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form action="login" method="post">
+        {!! csrf_field() !!}
         <fieldset>
-          <input type="hidden" name="_token" value="{{csrf_token()}}">
+          <!--   -->
           <h2>Please Log In</h2>
           @if(count($errors)>0)
             <div class="alert alert-danger">
