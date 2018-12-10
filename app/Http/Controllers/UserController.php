@@ -26,4 +26,35 @@ class UserController extends Controller
         return redirect('login')->with('alert','Login fail. Please try again');
       }
     }
+
+    function getSignup () {
+      return view('users.signup');
+    }
+
+    function postSignup (Request $request) {
+      $this->validate($request,[
+        'username'=>'required',
+        'email'=>'required',
+        'fullname'=>'required',
+        'password'=>'required',
+        'password_confirmation'=>'required'
+      ]);
+    
+
+    $user = new User;
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->fullname = $request->fullname;
+    $user->password = bcrypt($request->password);
+    $user->purpose = $request->purpose;
+    $user->save();
+    Auth::login($user);
+
+    return redirect('')->with('alert', 'Signup successfully.');
+  }
+
+  function logout () {
+    Auth::logout();
+    return redirect('');
+  }
 }
