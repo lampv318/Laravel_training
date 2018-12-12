@@ -23,3 +23,4 @@ Route::get('logout', 'UserController@logout');
 Route::get('{username}/profile','UserController@profile');
 Route::post('{username}/profile','UserController@postUpdate');
 Route::get('{username}/my_page', 'UserController@getMyPage');
+Route::post('search','SearchController@postSearch');
